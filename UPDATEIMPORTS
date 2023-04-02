@@ -1,0 +1,1 @@
+tar cf -  bit24_booth_wallace.v common.vh emax6.v fsm.v lmring.v nbit_csa.v nbit_ndepth_queue.v nbit_register.v stage1.v stage2.v stage3.v stage4.v stage5.v unit.v vu440_top.v|(cd VU440_64st.srcs/sources_1/imports/RTL/;tar xpf -)

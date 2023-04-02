@@ -1,0 +1,98 @@
+#!/usr/local/bin/perl
+
+@OARGV = @ARGV;
+$HOME  = $ENV{"HOME"};
+$PROG  = $0;
+$loopname = 0;
+$uniqloop = 0;
+
+if ($#ARGV != 0) {
+    printf "Usage: %s <xxx-csim.emac6.log>\n", $PROG;
+    exit 1;
+}
+
+if (!open(INFH, $ARGV[0])) {
+    die "can't open $ARGV[0]";
+}
+
+while (<INFH>) {
+    if    (/^.+:PIO WR adr=(50100020) msk=(000000ff) data=(\w{16})_(\w{16})_(\w{16})_(\w{16})$/) { #ADTR
+	$adtr = sprintf "%08.8x", (hex(substr($6, -8, 8)) - 0x20000000);
+	$ahex = substr($adtr, -8, 8); # limit to lower 32bit
+	printf "HOST_PIO_W(32'h00020, 32'h%s, 256'h00000000000000000000000000000000000000000000000000000000%s); \/\/ADTR -0x20000000\n", $2, $ahex;
+	$uniqloop = 0;
+    }
+    elsif (/^.+:PIO WR adr=(50100020) msk=(ff000000) data=(\w{16})_(\w{16})_(\w{16})_(\w{16})$/) { #DMRP
+	$padr = sprintf "%08.8x", (hex(substr($3,  -8, 8)) + 0x20000000);
+	$plen = sprintf "%08.8x", (hex(substr($3, -16, 8)));
+	$ahex = substr($padr, -8, 8); # limit to lower 32bit
+	printf "HOST_PIO_W(32'h00020, 32'h%s, 256'h%s%s000000000000000000000000000000000000000000000000); \/\/DMRP +0x20000000\n", $2, $plen, $ahex;
+	$uniqloop = 0;
+    }
+    elsif (/^.+:PIO WR adr=501(\w+) msk=(\w{8}) data=(\w{16})_(\w{16})_(\w{16})_(\w{16})$/) { #CHIP0-3
+	printf "HOST_PIO_W(32'h%s, 32'h%s, 256'h%s%s%s%s); \/\/REGS\n",$1,$2,$3,$4,$5,$6;
+	$uniqloop = 0;
+    }
+    elsif (/^.+:PIO WR adr=([6789]\w+) msk=(\w{8}) data=(\w{16})_(\w{16})_(\w{16})_(\w{16})$/) { #LMM PIOWR
+	$addr = sprintf "%08.8x", (hex($1) + 0x20000000);
+	$ahex = substr($addr, -8, 8); # limit to lower 32bit
+	printf "HOST_PIO_W(32'h%s, 32'h%s, 256'h%s%s%s%s); \/\/LMM\n",$ahex,$2,$3,$4,$5,$6;
+	$uniqloop = 0;
+    }
+    elsif (/^.+:DMA WR start ddradr=(\w+) lmmadr=([6789]\w+) len=(\w{4})$/) { #LMM DMAWR
+	$addr = sprintf "%08.8x", (hex($2) + 0x20000000);
+	$ahex = substr($addr, -8, 8); # limit to lower 32bit
+	printf "HOST_DMA_AW(32'h%s, 16'h%s); \/\/LMM\n",$ahex,$3;
+	$uniqloop = 0;
+    }
+    elsif (/^.+:DMA WR mreq=(\w+) last=(\w+) wstrb=(\w+) data=(\w{16})_(\w{16})_(\w{16})_(\w{16})$/) { #LMM DMAWR
+	printf "HOST_DMA_DW(1'b%s, 32'h%s, 256'h%s%s%s%s); \/\/LMM\n",$2,$3,$4,$5,$6,$7;
+	$uniqloop = 0;
+    }
+    elsif (/^.+:PIO RD adr=([6789]\w+) data=(\w{16})_(\w{16})_(\w{16})_(\w{16})$/) { #LMM PIORD
+	$addr = sprintf "%08.8x", (hex(substr($1, -8, 8)) + 0x20000000);
+	$ahex = substr($addr, -8, 8); # limit to lower 32bit
+	printf "HOST_PIO_R(32'h%s); \/\/LMM\n",$ahex;
+	printf "if (RDDATA != 256'h%s%s%s%s) begin\n",$2,$3,$4,$5;
+	printf "  \$display(\"[%%t] ----- ERROR ADDR=%%s RDDATA=%%h should be %s_%s_%s_%s -----\",\$time, \"$ahex\", RDDATA);\n", $2,$3,$4,$5;
+	printf "  error = error +32'h1;\n";
+	printf "end\n";
+    }
+    elsif (/^.+:DMA RD start lmmadr=([6789]\w+) ddradr=(\w+) len=(\w{4})$/) { #LMM DMARD
+	$addr = sprintf "%08.8x", (hex($1) + 0x20000000);
+	$ahex = substr($addr, -8, 8); # limit to lower 32bit
+	printf "HOST_DMA_AR(32'h%s, 16'h%s); \/\/LMM\n",$ahex,$3;
+	$uniqloop = 0;
+    }
+    elsif (/^.+:DMA RD adr=([6789]\w+) data=(\w{16})_(\w{16})_(\w{16})_(\w{16})$/) { #LMM DMARD
+	$addr = sprintf "%08.8x", (hex(substr($1, -8, 8)) + 0x20000000);
+	$ahex = substr($addr, -8, 8); # limit to lower 32bit
+	printf "HOST_DMA_DR(32'h%s); \/\/LMM\n",$ahex;
+	printf "if (RDDATA != 256'h%s%s%s%s) begin\n",$2,$3,$4,$5;
+	printf "  \$display(\"[%%t] ----- ERROR ADDR=%%s RDDATA=%%h should be %s_%s_%s_%s -----\",\$time, \"$ahex\", RDDATA);\n", $2,$3,$4,$5;
+	printf "  error = error +32'h1;\n";
+	printf "end\n";
+    }
+    elsif (/^.+:PIO RD adr=(50100000) data=(\w+)$/) { #STAT
+	if ($uniqloop == 0) {
+	    $loopname++;
+	    printf "begin : loop%s\n", $loopname;
+	    printf "  forever begin\n";
+	    printf "    @(posedge CLK);\n";
+	    printf "    \#(SDELAY);\n";
+	    printf "    HOST_PIO_R(0);\n";
+	    printf "    if (RDDATA[7:0] == 8'h00) begin\n";
+	    printf "      \$display(\"[%%t] ----- EMAXSTAT=0 -----\",\$time);\n";
+	    printf "      disable loop%s;\n", $loopname;
+	    printf "    end\n";
+	    printf "    system_cycle <= system_cycle + 16'h0001;\n";
+	    printf "  end\n";
+	    printf "end\n";
+	    $uniqloop = 1;
+	}
+    }
+}
+
+close(INFH);
+
+exit 0;

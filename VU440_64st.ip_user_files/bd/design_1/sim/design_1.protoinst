@@ -1,0 +1,263 @@
+{
+	"version": "1.0",
+	"modules": {
+		"design_1": {
+			"proto_instances": {
+				"/C2C_MASTER_TOP_0/M_AXI": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "M_AXI_CLK"},
+						"ARADDR": { "actual": "M_AXI_ARADDR"},
+						"ARBURST": { "actual": "M_AXI_ARBURST"},
+						"ARCACHE": { "actual": "M_AXI_ARCACHE"},
+						"ARID": { "actual": "M_AXI_ARID"},
+						"ARLEN": { "actual": "M_AXI_ARLEN"},
+						"ARLOCK": { "actual": "M_AXI_ARLOCK"},
+						"ARPROT": { "actual": "M_AXI_ARPROT"},
+						"ARQOS": { "actual": "M_AXI_ARQOS"},
+						"ARREADY": { "actual": "M_AXI_ARREADY"},
+						"ARSIZE": { "actual": "M_AXI_ARSIZE"},
+						"ARUSER": { "actual": "M_AXI_ARUSER"},
+						"ARVALID": { "actual": "M_AXI_ARVALID"},
+						"AWADDR": { "actual": "M_AXI_AWADDR"},
+						"AWBURST": { "actual": "M_AXI_AWBURST"},
+						"AWCACHE": { "actual": "M_AXI_AWCACHE"},
+						"AWID": { "actual": "M_AXI_AWID"},
+						"AWLEN": { "actual": "M_AXI_AWLEN"},
+						"AWLOCK": { "actual": "M_AXI_AWLOCK"},
+						"AWPROT": { "actual": "M_AXI_AWPROT"},
+						"AWQOS": { "actual": "M_AXI_AWQOS"},
+						"AWREADY": { "actual": "M_AXI_AWREADY"},
+						"AWSIZE": { "actual": "M_AXI_AWSIZE"},
+						"AWUSER": { "actual": "M_AXI_AWUSER"},
+						"AWVALID": { "actual": "M_AXI_AWVALID"},
+						"BID": { "actual": "M_AXI_BID"},
+						"BREADY": { "actual": "M_AXI_BREADY"},
+						"BRESP": { "actual": "M_AXI_BRESP"},
+						"BVALID": { "actual": "M_AXI_BVALID"},
+						"RDATA": { "actual": "M_AXI_RDATA"},
+						"RID": { "actual": "M_AXI_RID"},
+						"RLAST": { "actual": "M_AXI_RLAST"},
+						"RREADY": { "actual": "M_AXI_RREADY"},
+						"RRESP": { "actual": "M_AXI_RRESP"},
+						"RVALID": { "actual": "M_AXI_RVALID"},
+						"WDATA": { "actual": "M_AXI_WDATA"},
+						"WLAST": { "actual": "M_AXI_WLAST"},
+						"WREADY": { "actual": "M_AXI_WREADY"},
+						"WSTRB": { "actual": "M_AXI_WSTRB"},
+						"WVALID": { "actual": "M_AXI_WVALID"}
+					}
+				},
+				"/C2C_MASTER_TOP_0/RX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"TDATA": { "actual": "RX_TDATA"},
+						"TKEEP": { "actual": "RX_TKEEP"},
+						"TLAST": { "actual": "RX_TLAST"},
+						"TVALID": { "actual": "RX_TVALID"}
+					}
+				},
+				"/C2C_MASTER_TOP_0/TX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"TDATA": { "actual": "TX_TDATA"},
+						"TKEEP": { "actual": "TX_TKEEP"},
+						"TLAST": { "actual": "TX_TLAST"},
+						"TREADY": { "actual": "TX_TREADY"},
+						"TVALID": { "actual": "TX_TVALID"}
+					}
+				},
+				"/C2C_SLAVE_TOP_0/RX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"TDATA": { "actual": "RX_TDATA"},
+						"TKEEP": { "actual": "RX_TKEEP"},
+						"TLAST": { "actual": "RX_TLAST"},
+						"TVALID": { "actual": "RX_TVALID"}
+					}
+				},
+				"/C2C_SLAVE_TOP_0/S_AXI": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "S_AXI_CLK"},
+						"ARADDR": { "actual": "S_AXI_ARADDR"},
+						"ARBURST": { "actual": "S_AXI_ARBURST"},
+						"ARCACHE": { "actual": "S_AXI_ARCACHE"},
+						"ARID": { "actual": "S_AXI_ARID"},
+						"ARLEN": { "actual": "S_AXI_ARLEN"},
+						"ARLOCK": { "actual": "S_AXI_ARLOCK"},
+						"ARPROT": { "actual": "S_AXI_ARPROT"},
+						"ARQOS": { "actual": "S_AXI_ARQOS"},
+						"ARREADY": { "actual": "S_AXI_ARREADY"},
+						"ARSIZE": { "actual": "S_AXI_ARSIZE"},
+						"ARUSER": { "actual": "S_AXI_ARUSER"},
+						"ARVALID": { "actual": "S_AXI_ARVALID"},
+						"AWADDR": { "actual": "S_AXI_AWADDR"},
+						"AWBURST": { "actual": "S_AXI_AWBURST"},
+						"AWCACHE": { "actual": "S_AXI_AWCACHE"},
+						"AWID": { "actual": "S_AXI_AWID"},
+						"AWLEN": { "actual": "S_AXI_AWLEN"},
+						"AWLOCK": { "actual": "S_AXI_AWLOCK"},
+						"AWPROT": { "actual": "S_AXI_AWPROT"},
+						"AWQOS": { "actual": "S_AXI_AWQOS"},
+						"AWREADY": { "actual": "S_AXI_AWREADY"},
+						"AWSIZE": { "actual": "S_AXI_AWSIZE"},
+						"AWUSER": { "actual": "S_AXI_AWUSER"},
+						"AWVALID": { "actual": "S_AXI_AWVALID"},
+						"BID": { "actual": "S_AXI_BID"},
+						"BREADY": { "actual": "S_AXI_BREADY"},
+						"BRESP": { "actual": "S_AXI_BRESP"},
+						"BVALID": { "actual": "S_AXI_BVALID"},
+						"RDATA": { "actual": "S_AXI_RDATA"},
+						"RID": { "actual": "S_AXI_RID"},
+						"RLAST": { "actual": "S_AXI_RLAST"},
+						"RREADY": { "actual": "S_AXI_RREADY"},
+						"RRESP": { "actual": "S_AXI_RRESP"},
+						"RVALID": { "actual": "S_AXI_RVALID"},
+						"WDATA": { "actual": "S_AXI_WDATA"},
+						"WLAST": { "actual": "S_AXI_WLAST"},
+						"WREADY": { "actual": "S_AXI_WREADY"},
+						"WSTRB": { "actual": "S_AXI_WSTRB"},
+						"WVALID": { "actual": "S_AXI_WVALID"}
+					}
+				},
+				"/C2C_SLAVE_TOP_0/TX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"TDATA": { "actual": "TX_TDATA"},
+						"TKEEP": { "actual": "TX_TKEEP"},
+						"TLAST": { "actual": "TX_TLAST"},
+						"TREADY": { "actual": "TX_TREADY"},
+						"TVALID": { "actual": "TX_TVALID"}
+					}
+				},
+				"/aurora_64b66b_0/USER_DATA_M_AXIS_RX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "user_clk_out"},
+						"ARESET": { "actual": "sys_reset_out"},
+						"TDATA": { "actual": "m_axi_rx_tdata"},
+						"TKEEP": { "actual": "m_axi_rx_tkeep"},
+						"TLAST": { "actual": "m_axi_rx_tlast"},
+						"TVALID": { "actual": "m_axi_rx_tvalid"}
+					}
+				},
+				"/aurora_64b66b_0/USER_DATA_S_AXIS_TX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "user_clk_out"},
+						"ARESET": { "actual": "sys_reset_out"},
+						"TDATA": { "actual": "s_axi_tx_tdata"},
+						"TKEEP": { "actual": "s_axi_tx_tkeep"},
+						"TLAST": { "actual": "s_axi_tx_tlast"},
+						"TREADY": { "actual": "s_axi_tx_tready"},
+						"TVALID": { "actual": "s_axi_tx_tvalid"}
+					}
+				},
+				"/aurora_64b66b_1/USER_DATA_M_AXIS_RX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "user_clk_out"},
+						"ARESET": { "actual": "sys_reset_out"},
+						"TDATA": { "actual": "m_axi_rx_tdata"},
+						"TKEEP": { "actual": "m_axi_rx_tkeep"},
+						"TLAST": { "actual": "m_axi_rx_tlast"},
+						"TVALID": { "actual": "m_axi_rx_tvalid"}
+					}
+				},
+				"/aurora_64b66b_1/USER_DATA_S_AXIS_TX": {
+					"interface": "xilinx.com:interface:axis:1.0",
+					"ports": {
+						"ACLK": { "actual": "user_clk_out"},
+						"ARESET": { "actual": "sys_reset_out"},
+						"TDATA": { "actual": "s_axi_tx_tdata"},
+						"TKEEP": { "actual": "s_axi_tx_tkeep"},
+						"TLAST": { "actual": "s_axi_tx_tlast"},
+						"TREADY": { "actual": "s_axi_tx_tready"},
+						"TVALID": { "actual": "s_axi_tx_tvalid"}
+					}
+				},
+				"/emax6_0/axi_m": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "ACLK"},
+						"ARADDR": { "actual": "axi_m_araddr"},
+						"ARBURST": { "actual": "axi_m_arburst"},
+						"ARCACHE": { "actual": "axi_m_arcache"},
+						"ARESETN": { "actual": "ARESETN"},
+						"ARID": { "actual": "axi_m_arid"},
+						"ARLEN": { "actual": "axi_m_arlen"},
+						"ARPROT": { "actual": "axi_m_arprot"},
+						"ARREADY": { "actual": "axi_m_arready"},
+						"ARSIZE": { "actual": "axi_m_arsize"},
+						"ARVALID": { "actual": "axi_m_arvalid"},
+						"AWADDR": { "actual": "axi_m_awaddr"},
+						"AWBURST": { "actual": "axi_m_awburst"},
+						"AWCACHE": { "actual": "axi_m_awcache"},
+						"AWID": { "actual": "axi_m_awid"},
+						"AWLEN": { "actual": "axi_m_awlen"},
+						"AWPROT": { "actual": "axi_m_awprot"},
+						"AWREADY": { "actual": "axi_m_awready"},
+						"AWSIZE": { "actual": "axi_m_awsize"},
+						"AWVALID": { "actual": "axi_m_awvalid"},
+						"BID": { "actual": "axi_m_bid"},
+						"BREADY": { "actual": "axi_m_bready"},
+						"BRESP": { "actual": "axi_m_bresp"},
+						"BVALID": { "actual": "axi_m_bvalid"},
+						"RDATA": { "actual": "axi_m_rdata"},
+						"RID": { "actual": "axi_m_rid"},
+						"RLAST": { "actual": "axi_m_rlast"},
+						"RREADY": { "actual": "axi_m_rready"},
+						"RRESP": { "actual": "axi_m_rresp"},
+						"RVALID": { "actual": "axi_m_rvalid"},
+						"WDATA": { "actual": "axi_m_wdata"},
+						"WLAST": { "actual": "axi_m_wlast"},
+						"WREADY": { "actual": "axi_m_wready"},
+						"WSTRB": { "actual": "axi_m_wstrb"},
+						"WVALID": { "actual": "axi_m_wvalid"}
+					}
+				},
+				"/emax6_0/axi_s": {
+					"interface": "xilinx.com:interface:aximm:1.0",
+					"ports": {
+						"ACLK": { "actual": "ACLK"},
+						"ARADDR": { "actual": "axi_s_araddr"},
+						"ARBURST": { "actual": "axi_s_arburst"},
+						"ARCACHE": { "actual": "axi_s_arcache"},
+						"ARESETN": { "actual": "ARESETN"},
+						"ARID": { "actual": "axi_s_arid"},
+						"ARLEN": { "actual": "axi_s_arlen"},
+						"ARPROT": { "actual": "axi_s_arprot"},
+						"ARREADY": { "actual": "axi_s_arready"},
+						"ARSIZE": { "actual": "axi_s_arsize"},
+						"ARVALID": { "actual": "axi_s_arvalid"},
+						"AWADDR": { "actual": "axi_s_awaddr"},
+						"AWBURST": { "actual": "axi_s_awburst"},
+						"AWCACHE": { "actual": "axi_s_awcache"},
+						"AWID": { "actual": "axi_s_awid"},
+						"AWLEN": { "actual": "axi_s_awlen"},
+						"AWPROT": { "actual": "axi_s_awprot"},
+						"AWREADY": { "actual": "axi_s_awready"},
+						"AWSIZE": { "actual": "axi_s_awsize"},
+						"AWVALID": { "actual": "axi_s_awvalid"},
+						"BID": { "actual": "axi_s_bid"},
+						"BREADY": { "actual": "axi_s_bready"},
+						"BRESP": { "actual": "axi_s_bresp"},
+						"BVALID": { "actual": "axi_s_bvalid"},
+						"RDATA": { "actual": "axi_s_rdata"},
+						"RID": { "actual": "axi_s_rid"},
+						"RLAST": { "actual": "axi_s_rlast"},
+						"RREADY": { "actual": "axi_s_rready"},
+						"RRESP": { "actual": "axi_s_rresp"},
+						"RVALID": { "actual": "axi_s_rvalid"},
+						"WDATA": { "actual": "axi_s_wdata"},
+						"WLAST": { "actual": "axi_s_wlast"},
+						"WREADY": { "actual": "axi_s_wready"},
+						"WSTRB": { "actual": "axi_s_wstrb"},
+						"WVALID": { "actual": "axi_s_wvalid"}
+					}
+				}
+			}
+		}
+	}
+}

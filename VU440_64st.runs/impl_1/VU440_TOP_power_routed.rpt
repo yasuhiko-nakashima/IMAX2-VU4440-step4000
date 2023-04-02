@@ -1,0 +1,175 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2018.3.1 (lin64) Build 2489853 Tue Mar 26 04:18:30 MDT 2019
+| Date             : Thu Mar 30 18:12:23 2023
+| Host             : cad104.naist.jp running 64-bit CentOS Linux release 7.9.2009 (Core)
+| Command          : report_power -file VU440_TOP_power_routed.rpt -pb VU440_TOP_power_summary_routed.pb -rpx VU440_TOP_power_routed.rpx
+| Design           : VU440_TOP
+| Device           : xcvu440-flga2892-2-e
+| Design State     : routed
+| Grade            : extended
+| Process          : typical
+| Characterization : Production
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 24.962       |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 21.415       |
+| Device Static (W)        | 3.547        |
+| Effective TJA (C/W)      | 0.6          |
+| Max Ambient (C)          | 84.2         |
+| Junction Temperature (C) | 40.8         |
+| Confidence Level         | Medium       |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++-------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
++-------------------------+-----------+----------+-----------+-----------------+
+| Clocks                  |     2.942 |       12 |       --- |             --- |
+| CLB Logic               |     6.116 |  2733509 |       --- |             --- |
+|   LUT as Logic          |     5.998 |  1899733 |   2532960 |           75.00 |
+|   Register              |     0.073 |   787019 |   5065920 |           15.54 |
+|   CARRY8                |     0.028 |    10850 |    316620 |            3.43 |
+|   LUT as Shift Register |     0.017 |     1418 |    459360 |            0.31 |
+|   BUFG                  |    <0.001 |       21 |       240 |            8.75 |
+|   Others                |     0.000 |     8663 |       --- |             --- |
+| Signals                 |     7.870 |  2237060 |       --- |             --- |
+| Block RAM               |     0.957 |     1056 |      2520 |           41.90 |
+| DSPs                    |     0.102 |      256 |      2880 |            8.89 |
+| I/O                     |     0.007 |        8 |      1456 |            0.55 |
+| GTH                     |     3.420 |       16 |        48 |           33.33 |
+| Static Power            |     3.547 |          |           |                 |
+| Total                   |    24.962 |          |           |                 |
++-------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++------------+-------------+-----------+-------------+------------+
+| Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
++------------+-------------+-----------+-------------+------------+
+| Vccint     |       0.950 |    20.912 |      19.197 |      1.715 |
+| Vccaux     |       1.800 |     0.624 |       0.000 |      0.624 |
+| Vccaux_io  |       1.800 |     0.223 |       0.003 |      0.219 |
+| Vccint_io  |       0.950 |     0.076 |       0.001 |      0.075 |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |
+| Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |
+| Vcco18     |       1.800 |     0.000 |       0.000 |      0.000 |
+| Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |
+| Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |
+| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |
+| Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |
+| Vccbram    |       0.950 |     0.110 |       0.022 |      0.089 |
+| MGTAVcc    |       1.000 |     1.919 |       1.850 |      0.069 |
+| MGTAVtt    |       1.200 |     1.167 |       1.084 |      0.083 |
+| MGTVccaux  |       1.800 |     0.000 |       0.000 |      0.000 |
+| Vccadc     |       1.800 |     0.041 |       0.000 |      0.041 |
+| MGTYVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
+| MGTYAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
+| MGTYAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
++------------+-------------+-----------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                               | Action                                                                                                     |
++-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | High       | Design is routed                                      |                                                                                                            |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                |                                                                                                            |
+| I/O nodes activity          | Medium     | More than 5% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes        | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                          |                                                                                                            |
+|                             |            |                                                       |                                                                                                            |
+| Overall confidence level    | Medium     |                                                       |                                                                                                            |
++-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 0.6                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 0.8                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Clock                        | Domain                                                                                                                                                                                                                                                                                                                                                                                                   | Constraint (ns) |
++------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| AXI_CLK                      | CLK_150M_CLK_P                                                                                                                                                                                                                                                                                                                                                                                           |             6.7 |
+| INIT_CLK                     | CLK_78M_CLK_P                                                                                                                                                                                                                                                                                                                                                                                            |            12.8 |
+| REF_CLK0                     | GT_DIFF_REFCLK0_CLK_P                                                                                                                                                                                                                                                                                                                                                                                    |             6.4 |
+| REF_CLK1                     | GT_DIFF_REFCLK1_CLK_P                                                                                                                                                                                                                                                                                                                                                                                    |             6.4 |
+| aurora_64b66b_0_user_clk_out | inst_design_1_wrapper/design_1_i/aurora_64b66b_0/inst/clock_module_i/ultrascale_tx_userclk_1/GT_SERIAL_RX1_RXN[3]                                                                                                                                                                                                                                                                                        |            12.8 |
+| aurora_64b66b_1_user_clk_out | inst_design_1_wrapper/design_1_i/aurora_64b66b_1/inst/clock_module_i/ultrascale_tx_userclk_1/GT_SERIAL_RX0_RXN[3]                                                                                                                                                                                                                                                                                        |            12.8 |
+| rxoutclk_out[0]              | inst_design_1_wrapper/design_1_i/aurora_64b66b_0/inst/design_1_aurora_64b66b_0_0_core_i/design_1_aurora_64b66b_0_0_wrapper_i/design_1_aurora_64b66b_0_0_multi_gt_i/design_1_aurora_64b66b_0_0_gt_i/inst/gen_gtwizard_gthe3_top.design_1_aurora_64b66b_0_0_gt_gtwizard_gthe3_inst/gen_gtwizard_gthe3.gen_channel_container[1].gen_enabled_channel.gthe3_channel_wrapper_inst/channel_inst/rxoutclk_out[0] |             6.4 |
+| rxoutclk_out[0]_1            | inst_design_1_wrapper/design_1_i/aurora_64b66b_1/inst/design_1_aurora_64b66b_1_0_core_i/design_1_aurora_64b66b_1_0_wrapper_i/design_1_aurora_64b66b_1_0_multi_gt_i/design_1_aurora_64b66b_1_0_gt_i/inst/gen_gtwizard_gthe3_top.design_1_aurora_64b66b_1_0_gt_gtwizard_gthe3_inst/gen_gtwizard_gthe3.gen_channel_container[1].gen_enabled_channel.gthe3_channel_wrapper_inst/channel_inst/rxoutclk_out[0] |             6.4 |
+| txoutclk_out[0]              | inst_design_1_wrapper/design_1_i/aurora_64b66b_0/inst/design_1_aurora_64b66b_0_0_core_i/design_1_aurora_64b66b_0_0_wrapper_i/design_1_aurora_64b66b_0_0_multi_gt_i/design_1_aurora_64b66b_0_0_gt_i/inst/gen_gtwizard_gthe3_top.design_1_aurora_64b66b_0_0_gt_gtwizard_gthe3_inst/gen_gtwizard_gthe3.gen_channel_container[1].gen_enabled_channel.gthe3_channel_wrapper_inst/channel_inst/txoutclk_out[0] |             6.4 |
+| txoutclk_out[0]_1            | inst_design_1_wrapper/design_1_i/aurora_64b66b_1/inst/design_1_aurora_64b66b_1_0_core_i/design_1_aurora_64b66b_1_0_wrapper_i/design_1_aurora_64b66b_1_0_multi_gt_i/design_1_aurora_64b66b_1_0_gt_i/inst/gen_gtwizard_gthe3_top.design_1_aurora_64b66b_1_0_gt_gtwizard_gthe3_inst/gen_gtwizard_gthe3.gen_channel_container[1].gen_enabled_channel.gthe3_channel_wrapper_inst/channel_inst/txoutclk_out[0] |             6.4 |
++------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++-------------------------+-----------+
+| Name                    | Power (W) |
++-------------------------+-----------+
+| VU440_TOP               |    21.415 |
+|   inst_design_1_wrapper |    21.415 |
+|     design_1_i          |    21.415 |
+|       C2C_MASTER_TOP_0  |     0.374 |
+|       C2C_SLAVE_TOP_0   |     0.313 |
+|       aurora_64b66b_0   |     1.826 |
+|       aurora_64b66b_1   |     1.843 |
+|       clk_150m_buff     |     0.004 |
+|       clk_78m_buff      |     0.003 |
+|       emax6_0           |    17.051 |
++-------------------------+-----------+
+
+

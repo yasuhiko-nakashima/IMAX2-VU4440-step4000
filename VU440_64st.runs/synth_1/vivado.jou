@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3.1 (64-bit)
+# SW Build 2489853 on Tue Mar 26 04:18:30 MDT 2019
+# IP Build 2486929 on Tue Mar 26 06:44:21 MDT 2019
+# Start of session at: Thu Mar 30 11:16:05 2023
+# Process ID: 3900
+# Current directory: /home/nakashim/proj-arm64/fpga/VU440-step4000/VU440_64st.runs/synth_1
+# Command line: vivado -log VU440_TOP.vds -stack 10000 -product Vivado -mode batch -messageDb vivado.pb -notrace -source VU440_TOP.tcl
+# Log file: /home/nakashim/proj-arm64/fpga/VU440-step4000/VU440_64st.runs/synth_1/VU440_TOP.vds
+# Journal file: /home/nakashim/proj-arm64/fpga/VU440-step4000/VU440_64st.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source VU440_TOP.tcl -notrace
